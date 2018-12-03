@@ -12,8 +12,8 @@ in its "in graphics" form:
    IN GRAPHICS:   x = x + pixels
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Aaron Wilkin, their colleagues, and Robert Kreft.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import math
 import builtins  # Never necessary, but here for pedagogical reasons
@@ -90,7 +90,7 @@ def run_test_sum_from():
     print('       actual (from my code):  ', answer_from_my_code)
 
 # -----------------------------------------------------------------------------
-# TODO: 2.
+# DONE: 2.
 #   When you have READ the above  run_test_sum_from  function,
 #   asking questions as needed, and you feel that you (mostly, at least)
 #   understand it, and you feel that you understand from the example:
@@ -105,6 +105,11 @@ def run_test_sum_from():
 
 
 def sum_from(m, n):
+    total=0
+    for k in range(n+1-m):
+        total=total+(k+m)
+    return total
+
     """
     What comes in:  The arguments are two integers m and n, with m <= n.
     What goes out:  Returns the sum of the integers from m to n,
@@ -114,7 +119,7 @@ def sum_from(m, n):
         sum_from(6, 9) returns 6 + 7 + 8 + 9, that is, 30.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # IMPORTANT:  Your solution MUST
@@ -129,7 +134,7 @@ def sum_from(m, n):
 def run_test_factorial():
     """ Tests the   factorial   function. """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  factorial  function defined below.
     #   Include at least **   5   ** tests (we wrote two for you).
     #
@@ -157,13 +162,32 @@ def run_test_factorial():
     print('       actual (from my code): ', answer_from_my_code)
 
     # -------------------------------------------------------------------------
-    # TO DO: 4 (continued).
+    # DONE: 4 (continued).
     # Below this comment, add 3 more test cases, at least two of which
     #   ** uses  math.factorial  as an ORACLE for testing. **
     # -------------------------------------------------------------------------
 
+    # Test 3:
+    expected =120
+    answer_from_my_code = factorial(5)
+    print('Test 3 expected (from oracle):', expected)
+    print('       actual (from my code): ', answer_from_my_code)
+    # Test 4:
+    expected =362880
+    answer_from_my_code = factorial(9)
+    print('Test 4 expected (from oracle):', expected)
+    print('       actual (from my code): ', answer_from_my_code)
+    # Test 5:
+    expected =39916800
+    answer_from_my_code = factorial(11)
+    print('Test 5 expected (from oracle):', expected)
+    print('       actual (from my code): ', answer_from_my_code)
 
 def factorial(n):
+    ftotal=1
+    for k in range(n):
+        ftotal=ftotal*(k+1)
+    return ftotal
     """
     What comes in:  The sole argument is a non-negative integer n.
     What goes out:  Returns n!, that is, n x (n-1) x (n-2) x ... x 1.
