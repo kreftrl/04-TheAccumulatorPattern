@@ -301,6 +301,34 @@ def run_test_draw_lines_from_rectangles():
 
 
 def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
+    windowlfr = window
+    drawnrectangle1 = rectangle1
+    drawnrectangle1.attach_to(windowlfr)
+    color1 = drawnrectangle1.outline_color
+    drawnrectangle2 = rectangle2
+    drawnrectangle2.attach_to(windowlfr)
+    color2 = drawnrectangle2.outline_color
+    xc1 = (drawnrectangle1.corner_2.x + drawnrectangle1.corner_1.x) / 2
+    yc1 = (drawnrectangle1.corner_2.y + drawnrectangle1.corner_1.y) / 2
+    xc2 = (drawnrectangle2.corner_2.x + drawnrectangle2.corner_1.x) / 2
+    yc2 = (drawnrectangle2.corner_2.y + drawnrectangle2.corner_1.y) / 2
+    if (drawnrectangle1.corner_1.x<drawnrectangle1.corner_2.x):
+        dx=drawnrectangle1.corner_2.x-drawnrectangle1.corner_1.x
+    else :
+        dx=drawnrectangle1.corner_1.x-drawnrectangle1.corner_2.x
+    if (drawnrectangle1.corner_1.y<drawnrectangle1.corner_2.y):
+        dy = drawnrectangle1.corner_2.y - drawnrectangle1.corner_1.y
+    else :
+        dy = drawnrectangle1.corner_1.y - drawnrectangle1.corner_2.y
+    for k in range (n):
+        line=rg.Line(rg.Point(xc1-k*dx/2,yc1+k*dy/2),rg.Point(xc2-k*dx/2,yc2+k*dy/2))
+        line.thickness=5
+        if k%2==0:
+            line.color=color1
+        else:
+            line.color=color2
+        line.attach_to(windowlfr)
+    windowlfr.render()
     """
     What comes in:  Four arguments:
       -- Two rg.Rectangles.
